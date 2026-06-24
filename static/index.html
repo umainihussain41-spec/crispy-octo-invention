@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Support Desk Voice Agent</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace" aria-label="Voicebot workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Live Support Desk</p>
+            <h1>Voice Troubleshooter</h1>
+          </div>
+          <div class="status-pill" id="status">Mic needed</div>
+        </header>
+
+        <section class="conversation" id="conversation" aria-live="polite">
+          <article class="message assistant">
+            <span class="role">Assistant</span>
+            <p>Ready for device, app, account, deployment, and developer support.</p>
+          </article>
+        </section>
+
+        <form class="composer" id="textForm">
+          <input id="textInput" autocomplete="off" placeholder="Type a fallback message" />
+          <button type="submit" title="Send typed message">Send</button>
+        </form>
+      </section>
+
+      <aside class="control-panel" aria-label="Voice controls">
+        <div class="meter-wrap">
+          <div class="meter" id="meter"></div>
+        </div>
+        <button class="primary" id="toggleListen" type="button" title="Enable the microphone">
+          Enable Mic
+        </button>
+        <div class="switch-row">
+          <label for="voiceIsolation">Isolate voice</label>
+          <input id="voiceIsolation" type="checkbox" checked />
+        </div>
+        <div class="switch-row">
+          <label for="autoReply">Auto speak replies</label>
+          <input id="autoReply" type="checkbox" checked />
+        </div>
+        <label class="range-label" for="sensitivity">
+          Sensitivity
+          <input id="sensitivity" type="range" min="0.01" max="0.12" step="0.005" value="0.035" />
+        </label>
+        <dl class="model-list">
+          <div><dt>Chat</dt><dd id="chatModel">Loading</dd></div>
+          <div><dt>STT</dt><dd id="sttModel">Loading</dd></div>
+          <div><dt>TTS</dt><dd id="ttsModel">Loading</dd></div>
+        </dl>
+        <button class="secondary" id="resetSession" type="button" title="Reset the conversation">
+          Reset
+        </button>
+      </aside>
+    </main>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
